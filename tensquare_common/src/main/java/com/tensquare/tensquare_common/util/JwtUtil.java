@@ -54,7 +54,7 @@ public class JwtUtil {
                             .setSigningKey(key)
                             .parseClaimsJws(jwtStr)
                             .getBody();
-        System.out.println(claims.getId());
+        //System.out.println(claims.getId());
         return claims;
     }
 
