@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.tensquare.tensquare_base.dao.LabelDao" >
+  <resultMap id="BaseResultMap" type="com.tensquare.tensquare_base.pojo.Label" >
+    <id column="id" property="id" jdbcType="VARCHAR" />
+    <result column="labelname" property="labelname" jdbcType="VARCHAR" />
+    <result column="state" property="state" jdbcType="VARCHAR" />
+    <result column="count" property="count" jdbcType="BIGINT" />
+    <result column="recommend" property="recommend" jdbcType="VARCHAR" />
+    <result column="fans" property="fans" jdbcType="BIGINT" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, labelname, state, count, recommend, fans
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from tb_label
+    where id = #{id,jdbcType=VARCHAR}
+  </select>
+</mapper>
