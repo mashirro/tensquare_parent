@@ -12,6 +12,7 @@ public class TensquareUserApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(TensquareUserApplication.class, args);
+
 	}
 
 	@Bean
