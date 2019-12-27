@@ -23,6 +23,7 @@ public class UserService extends ServiceImpl<UserDao, User> {
 
     /**
      * 发送短信验证码
+     *
      * @param mobile
      */
     public void sendSms(String mobile) {
@@ -43,17 +44,18 @@ public class UserService extends ServiceImpl<UserDao, User> {
 
     /**
      * 用户注册
+     *
      * @param user
-     * @param code  用户填写的验证码
+     * @param code 用户填写的验证码
      */
     public void add(User user, String code) {
         //1.从缓存中提取验证码
         String verifyCode = redisTemplate.opsForValue().get("smsCode_" + user.getMobile());
-        if(verifyCode == null){
+        if (verifyCode == null) {
             throw new RuntimeException("请点击获取短信验证码!");
         }
         //2.判断验证码是否输入正确
-        if(!verifyCode.equals(code)){
+        if (!verifyCode.equals(code)) {
             throw new RuntimeException("验证码输入不正确!");
         }
         //3.插入
@@ -62,6 +64,7 @@ public class UserService extends ServiceImpl<UserDao, User> {
 
     /**
      * 根据手机号查询用户
+     *
      * @param mobile
      * @return
      */
@@ -71,9 +74,30 @@ public class UserService extends ServiceImpl<UserDao, User> {
 
     /**
      * 根据id删除用户
+     *
      * @param id
      */
     public void deleteById(String id) {
         baseMapper.deleteById(id);
+    }
+
+    /**
+     * 增加粉丝数
+     *
+     * @param userid
+     * @param num
+     */
+    public void incFanscount(String userid, int num) {
+        baseMapper.incFanscount(userid, num);
+    }
+
+    /**
+     * 增加关注数
+     *
+     * @param userid
+     * @param num
+     */
+    public void incFollowcount(String userid, int num) {
+        baseMapper.incFollowcount(userid, num);
     }
 }

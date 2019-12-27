@@ -14,7 +14,7 @@ class TensquareUserApplicationTests {
 	@Test
 	void contextLoads() {
 		String key = jwtUtil.getKey();
-		System.out.println(key);
+		System.out.println("user模块jwt:"+key);
 	}
 
 }

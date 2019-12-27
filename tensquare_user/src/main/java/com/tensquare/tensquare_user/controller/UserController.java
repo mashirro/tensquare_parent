@@ -122,4 +122,31 @@ public class UserController {
         userService.deleteById(id);
         return new Result(true, StatusCode.OK, "删除成功");
     }
+
+
+    /**
+     * 增加粉丝数目
+     *
+     * @param userid
+     * @param num
+     */
+    @RequestMapping(value = "/incfans/{userid}/{num}", method = RequestMethod.POST)
+    @ResponseBody
+    public Result incFanscount(@PathVariable String userid, @PathVariable int num) {
+        userService.incFanscount(userid, num);
+        return new Result(true, StatusCode.OK, "操作成功");
+    }
+
+    /**
+     * 增加关注数目
+     *
+     * @param userid
+     * @param num
+     */
+    @RequestMapping(value = "/incFollow/{userid}/{num}", method = RequestMethod.POST)
+    @ResponseBody
+    public Result incFollowcount(@PathVariable String userid, @PathVariable int num) {
+        userService.incFollowcount(userid, num);
+        return new Result(true, StatusCode.OK, "操作成功");
+    }
 }
